@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa-Ratti</title>
+  <style>
+    :root {
+      --bg: #f5f0eb; /* Base beige background */
+      --text: #2c2a29;
+      --accent: #8c7a6b;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 0 20px 40px 20px;
+    }
+
+    /* Top bar: Starts pure white and fades into the beige background */
+    header {
+      text-align: center;
+      padding: 40px 20px 30px 20px;
+      background: linear-gradient(to bottom, #ffffff 0%, var(--bg) 100%);
+      margin-left: -20px;
+      margin-right: -20px;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      max-width: 180px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 25px;
+      font-size: 0.9rem;
+    }
+
+    /* 3-Column Grid for Home View */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card h3 {
+      margin: 15px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    /* Item Detail View */
+    .detail-view {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img src="logo.png" alt="Casa-Ratti Logo" class="logo">
+  </header>
+
+  <!-- HOME VIEW: 3-Column Grid -->
+  <main id="home-view" class="grid"></main>
+
+  <!-- ITEM DETAIL VIEW -->
+  <main id="detail-view" class="detail-view" style="display: none;">
+    <button class="back-btn" onclick="showHome()">← Back to Casa-Ratti</button>
+    <h2 id="item-title"></h2>
+    <p id="item-description"></p>
+    <div id="item-gallery" class="gallery"></div>
+  </main>
+
+  <script>
+    // GENERATE 30 ITEMS MATCHING FOLDER STRUCTURE (images/item-X/)
+    const collectionData = Array.from({ length: 30 }, (_, index) => {
+      const id = index + 1;
+      const folder = `images/item-${id}`;
+      
+      return {
+        id: `item-${id}`,
+        title: `Casa-Ratti Item #${id}`,
+        description: `Detailed description for Casa-Ratti collection piece #${id}.`,
+        coverImage: `${folder}/cover.jpg`,
+        images: [
+          `${folder}/cover.jpg`,
+          `${folder}/photo-1.jpg`,
+          `${folder}/photo-2.jpg`
+        ]
+      };
+    });
+
+    const homeView = document.getElementById('home-view');
+    const detailView = document.getElementById('detail-view');
+
+    // Render 3-column home grid
+    function renderHome() {
+      homeView.innerHTML = '';
+      collectionData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.onclick = () => showDetail(item.id);
+        card.innerHTML = `
+          <img src="${item.coverImage}" alt="${item.title}">
+          <h3>${item.title}</h3>
+        `;
+        homeView.appendChild(card);
+      });
+    }
+
+    // Render detail view with multiple photos
+    function showDetail(itemId) {
+      const item = collectionData.find(i => i.id === itemId);
+      if (!item) return;
+
+      document.getElementById('item-title').textContent = item.title;
+      document.getElementById('item-description').textContent = item.description;
+      
+      const gallery = document.getElementById('item-gallery');
+      gallery.innerHTML = item.images.map(src => `<img src="${src}" alt="${item.title}">`).join('');
+
+      homeView.style.display = 'none';
+      detailView.style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function showHome() {
+      detailView.style.display = 'none';
+      homeView.style.display = 'grid';
+    }
+
+    renderHome();
+  </script>
+</body>
+</html>
