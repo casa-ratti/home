@@ -9,6 +9,7 @@
       --bg: #f5f0eb; /* Base beige background */
       --text: #2c2a29;
       --accent: #8c7a6b;
+      --red-accent: #FF0C0C;
     }
     
     body {
@@ -16,21 +17,21 @@
       background-color: var(--bg);
       color: var(--text);
       margin: 0;
-      padding: 0 20px 40px 20px;
+      padding: 0 20px 0 20px;
     }
 
-    /* Top bar: Starts pure white and fades into the beige background */
+    /* Top bar: White background behind logo, fades to beige below it */
     header {
       text-align: center;
-      padding: 40px 20px 30px 20px;
-      background: linear-gradient(to bottom, #ffffff 0%, var(--bg) 100%);
+      padding: 50px 20px 40px 20px;
+      background: linear-gradient(to bottom, #ffffff 70%, var(--bg) 100%);
       margin-left: -20px;
       margin-right: -20px;
       margin-bottom: 30px;
     }
 
     .logo {
-      max-width: 180px;
+      max-width: 260px; /* Bigger logo size */
       height: auto;
       display: block;
       margin: 0 auto;
@@ -58,7 +59,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 0 auto 60px auto;
     }
 
     .card {
@@ -92,7 +93,7 @@
     /* Item Detail View */
     .detail-view {
       max-width: 1000px;
-      margin: 0 auto;
+      margin: 0 auto 60px auto;
     }
 
     .gallery {
@@ -108,6 +109,56 @@
       object-fit: cover;
       border-radius: 6px;
       background-color: #e5dfd8;
+    }
+
+    /* Footer Styles */
+    footer {
+      text-align: center;
+      padding: 40px 20px 60px 20px;
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+
+    .divider-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 35px;
+    }
+
+    .divider-line {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, var(--bg) 0%, var(--red-accent) 50%, var(--bg) 100%);
+      position: absolute;
+      top: 50%;
+      left: 0;
+      z-index: 1;
+    }
+
+    .border-img {
+      position: relative;
+      z-index: 2;
+      max-height: 40px;
+      width: auto;
+      background-color: var(--bg);
+      padding: 0 15px;
+    }
+
+    footer h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      color: var(--text);
+    }
+
+    footer p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #55514e;
     }
 
     /* Mobile Responsiveness */
@@ -135,6 +186,16 @@
     <p id="item-description"></p>
     <div id="item-gallery" class="gallery"></div>
   </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="divider-container">
+      <div class="divider-line"></div>
+      <img src="border.png" alt="Border motif" class="border-img" onerror="this.style.display='none'">
+    </div>
+    <h2>Tra noi e il sole</h2>
+    <p>My virtual Persol collection, to reconstruct the history of a glorious brand that has been overlooked. Displaying all my pairs, old and new.</p>
+  </footer>
 
   <script>
     // 1. ALL 29 COLLECTION ITEMS CONNECTED TO YOUR IMAGES DIRECTORY
@@ -170,9 +231,9 @@
       { folder: "G. Ratti Protector - Leather case", title: "G. Ratti Protector - Leather Case" }
     ];
 
-    // 2. AUTOMATICALLY GENERATE COLLECTION DATA BASED ON FOLDER NAMES
+    // 2. AUTOMATICALLY GENERATE COLLECTION DATA WITH ENCODED PATHS
     const collectionData = glasses.map(item => {
-      const folderPath = `images/${item.folder}`;
+      const folderPath = `images/${encodeURIComponent(item.folder)}`;
       return {
         id: item.folder,
         title: item.title,
