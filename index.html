@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casa-Ratti</title>
+  <!-- Import Federo Font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Federo&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --bg: #f5f0eb; /* Base beige background */
@@ -13,17 +18,17 @@
     }
     
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Federo', sans-serif;
       background-color: var(--bg);
       color: var(--text);
       margin: 0;
       padding: 0 20px 0 20px;
     }
 
-    /* Top bar: White background behind logo, fades to beige below it */
+    /* Top bar: White background behind logo sits higher now */
     header {
       text-align: center;
-      padding: 50px 20px 40px 20px;
+      padding: 20px 20px 30px 20px; /* Reduced top padding */
       background: linear-gradient(to bottom, #ffffff 70%, var(--bg) 100%);
       margin-left: -20px;
       margin-right: -20px;
@@ -31,13 +36,14 @@
     }
 
     .logo {
-      max-width: 260px; /* Bigger logo size */
+      max-width: 260px;
       height: auto;
       display: block;
       margin: 0 auto;
     }
 
     .back-btn {
+      font-family: 'Federo', sans-serif;
       background: var(--accent);
       color: #fff;
       border: none;
@@ -80,13 +86,14 @@
       height: 320px;
       object-fit: cover;
       display: block;
-      background-color: #e5dfd8; /* Placeholder background while loading */
+      background-color: #e5dfd8;
     }
 
     .card h3 {
+      font-family: 'Federo', sans-serif;
       margin: 15px;
-      font-size: 1rem;
-      font-weight: 500;
+      font-size: 1.05rem;
+      font-weight: 400;
       text-align: center;
     }
 
@@ -113,10 +120,10 @@
 
     /* Footer Styles */
     footer {
-      text-align: center;
-      padding: 40px 20px 60px 20px;
-      margin-left: -20px;
-      margin-right: -20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: left; /* Left-aligned footer content */
+      padding: 20px 0 60px 0;
     }
 
     .divider-container {
@@ -125,14 +132,17 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 35px;
+      height: 32px; /* Thick container height */
+      margin-left: -20px;
+      margin-right: -20px;
     }
 
     .divider-line {
       width: 100%;
-      height: 2px;
+      height: 32px; /* Thicker line (h1 scale) */
       background: linear-gradient(to right, var(--bg) 0%, var(--red-accent) 50%, var(--bg) 100%);
       position: absolute;
-      top: 50%;
+      top: 0;
       left: 0;
       z-index: 1;
     }
@@ -140,25 +150,26 @@
     .border-img {
       position: relative;
       z-index: 2;
-      max-height: 40px;
+      height: 28px; /* Fits cleanly inside the 32px thick line */
       width: auto;
-      background-color: var(--bg);
-      padding: 0 15px;
+      background: transparent; /* Allows red line to show through white PNG elements */
     }
 
     footer h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
+      font-family: 'Federo', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 400;
       margin: 0 0 12px 0;
       color: var(--text);
     }
 
     footer p {
-      max-width: 600px;
-      margin: 0 auto;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: #55514e;
+      font-family: 'Federo', sans-serif;
+      max-width: 700px;
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #44403c;
     }
 
     /* Mobile Responsiveness */
