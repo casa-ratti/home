@@ -132,7 +132,7 @@
     }
 
     .border-img {
-      height: 38px; /* Larger size matched to h2 header height */
+      height: 150px; /* 4x larger size */
       width: auto;
       max-width: 100%;
       display: inline-block;
@@ -158,9 +158,11 @@
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       .grid { grid-template-columns: repeat(2, 1fr); }
+      .border-img { height: 100px; } /* Slightly scale down for smaller mobile screens */
     }
     @media (max-width: 480px) {
       .grid { grid-template-columns: 1fr; }
+      .border-img { height: 80px; }
     }
   </style>
 </head>
