@@ -64,7 +64,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       max-width: 1200px;
-      margin: 0 auto 30px auto; /* 2x gap above border image */
+      margin: 0 auto 30px auto;
     }
 
     .card {
@@ -99,7 +99,7 @@
     /* Item Detail View */
     .detail-view {
       max-width: 1000px;
-      margin: 0 auto 30px auto; /* 2x gap above border image */
+      margin: 0 auto 30px auto;
     }
 
     .gallery {
@@ -125,7 +125,6 @@
       padding: 0 0 50px 0;
     }
 
-    /* 2x gap below border image */
     .border-divider-container {
       text-align: center;
       margin-top: 0;
@@ -194,37 +193,54 @@
   </footer>
 
   <script>
-    // 1. ALL 29 COLLECTION ITEMS CONNECTED TO YOUR IMAGES DIRECTORY
+    // 1. ALL COLLECTION ITEMS CONNECTED TO YOUR IMAGES DIRECTORY
     const glasses = [
-      { folder: "Persol Ratti 6201", title: "Persol Ratti 6201" },
-      { folder: "Persol Ratti", title: "Persol Ratti" },
-      { folder: "Persol Ratti 6622", title: "Persol Ratti 6622" },
-      { folder: "Persol Ratti 009", title: "Persol Ratti 009" },
       { folder: "Persol 009", title: "Persol 009" },
-      { folder: "Persol Ratti Andrea", title: "Persol Ratti Andrea" },
-      { folder: "Persol Ratti 69236", title: "Persol Ratti 69236" },
       { folder: "Persol 130", title: "Persol 130" },
       { folder: "Persol 135", title: "Persol 135" },
-      { folder: "Persol Ratti 58230 - Terminator", title: "Persol Ratti 58230 - Terminator" },
-      { folder: "Persol Ratti 69229", title: "Persol Ratti 69229" },
-      { folder: "Persol Ratti 200 52", title: "Persol Ratti 200 52" },
-      { folder: "G.Ratti Dictator aluminium cases", title: "G.Ratti Dictator Aluminium Cases" },
-      { folder: "Protector Aluminium Cases", title: "Protector Aluminium Cases" },
-      { folder: "Persol Ratti 52-72", title: "Persol Ratti 52/72" },
+      { folder: "Persol 140", title: "Persol 140" },
+      { folder: "Persol 649", title: "Persol 649" },
+      { folder: "Persol 714", title: "Persol 714" },
+      { folder: "Persol 810 Pininfarina", title: "Persol 810 Pininfarina" },
+      { folder: "Persol 2607", title: "Persol 2607" },
+      { folder: "Persol 2756-S", title: "Persol 2756-S" },
+      { folder: "Persol 2929-S", title: "Persol 2929-S" },
+      { folder: "Persol 2944-S", title: "Persol 2944-S" },
+      { folder: "Persol 3135S", title: "Persol 3135S" },
       { folder: "Persol 9649 24-31", title: "Persol 9649 24/31" },
-      { folder: "Persol Trend 47 122", title: "Persol Trend 47 122" },
+      { folder: "Persol Brevett", title: "Persol Brevett" },
+      { folder: "Persol Roadster", title: "Persol Roadster" },
       { folder: "Persol Steve McQueen - Brown", title: "Persol Steve McQueen - Brown" },
       { folder: "Persol Steve McQueen Black", title: "Persol Steve McQueen Black" },
-      { folder: "Persol Ratti 58412", title: "Persol Ratti 58412" },
-      { folder: "Persol Ratti 69262", title: "Persol Ratti 69262" },
-      { folder: "Persol Brevett", title: "Persol Brevett" },
-      { folder: "Persol Ratti 69600-56", title: "Persol Ratti 69600/56" },
+      { folder: "Persol Trend 47 122", title: "Persol Trend 47 122" },
+      { folder: "Persol Ratti", title: "Persol Ratti" },
+      { folder: "Persol Ratti 009", title: "Persol Ratti 009" },
+      { folder: "Persol Ratti 200", title: "Persol Ratti 200" },
+      { folder: "Persol Ratti 200 52", title: "Persol Ratti 200 52" },
+      { folder: "Persol Ratti 660", title: "Persol Ratti 660" },
+      { folder: "Persol Ratti 750", title: "Persol Ratti 750" },
+      { folder: "Persol Ratti 6201", title: "Persol Ratti 6201" },
+      { folder: "Persol Ratti 6622", title: "Persol Ratti 6622" },
+      { folder: "Persol Ratti 9271", title: "Persol Ratti 9271" },
+      { folder: "Persol Ratti 09125", title: "Persol Ratti 09125" },
       { folder: "Persol Ratti 09141 54-74", title: "Persol Ratti 09141 54-74" },
-      { folder: "Persol 810 Pininfarina", title: "Persol 810 Pininfarina" },
-      { folder: "Protector Ratti Glasses", title: "Protector Ratti Glasses" },
+      { folder: "Persol Ratti 52-72", title: "Persol Ratti 52/72" },
+      { folder: "Persol Ratti 58226", title: "Persol Ratti 58226" },
+      { folder: "Persol Ratti 58230 - Terminator", title: "Persol Ratti 58230 - Terminator" },
+      { folder: "Persol Ratti 58230 Terminator 2", title: "Persol Ratti 58230 Terminator 2" },
+      { folder: "Persol Ratti 58412", title: "Persol Ratti 58412" },
+      { folder: "Persol Ratti 69218", title: "Persol Ratti 69218" },
+      { folder: "Persol Ratti 69229", title: "Persol Ratti 69229" },
+      { folder: "Persol Ratti 69236", title: "Persol Ratti 69236" },
+      { folder: "Persol Ratti 69262", title: "Persol Ratti 69262" },
+      { folder: "Persol Ratti 69600-56", title: "Persol Ratti 69600/56" },
+      { folder: "Persol Ratti Andrea", title: "Persol Ratti Andrea" },
+      { folder: "G.Ratti Dictator aluminium cases", title: "G.Ratti Dictator Aluminium Cases" },
       { folder: "G.Ratti Protector - Aluminium Case", title: "G.Ratti Protector - Aluminium Case" },
       { folder: "G. Ratti Protector - Aluminium Case", title: "G. Ratti Protector - Aluminium Case" },
-      { folder: "G. Ratti Protector - Leather case", title: "G. Ratti Protector - Leather Case" }
+      { folder: "G. Ratti Protector - Leather case", title: "G. Ratti Protector - Leather Case" },
+      { folder: "Protector Aluminium Cases", title: "Protector Aluminium Cases" },
+      { folder: "Protector Ratti Glasses", title: "Protector Ratti Glasses" }
     ];
 
     // 2. AUTOMATICALLY GENERATE COLLECTION DATA WITH ENCODED PATHS
